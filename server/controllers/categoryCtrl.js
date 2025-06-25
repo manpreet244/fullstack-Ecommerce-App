@@ -15,7 +15,7 @@ const categoryCtrl = {
       const { name } = req.body;
       const category = await Category.findOne({ name });
       if (category)
-        return res.json(400).json({ msg: "Category already exists." });
+        return res.status(400).json({ msg: "Category already exists." });
       const newCategory = new Category({ name });
       await newCategory.save();
       return res.json("Category created.");

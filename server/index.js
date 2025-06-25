@@ -2,6 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const userRouter = require('./routes/userRoute')
 const categoryRouter = require('./routes/categoryRoute')
+const productRouter = require('./routes/productRoute')
+const uploadRoute = require('./routes/upload');
+
 require('dotenv').config();
 const cookieParser = require('cookie-parser');
 
@@ -14,6 +17,8 @@ app.use(express.json())
 //Routes
 app.use('/user' , userRouter);
 app.use('/api' , categoryRouter )
+app.use('/api' , productRouter )
+app.use('/api', uploadRoute);
 
 app.get("/", (req , res) => {
   res.json({ msg: "This is homepage" });
